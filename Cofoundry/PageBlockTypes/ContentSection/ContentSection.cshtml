@@ -1,0 +1,18 @@
+@model ContentSectionDataModel
+@inject ICofoundryBlockTypeHelper<ContentSectionDataModel> Cofoundry
+
+@Cofoundry.BlockType.UseDescription("This is a content row with a heading")
+
+<div>
+
+
+
+    <div class="mx-auto p1">
+
+        <p>
+            @Cofoundry.Sanitizer.Sanitize(Model.HtmlText)
+        </p>
+
+
+    </div>
+</div>

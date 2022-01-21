@@ -1,0 +1,134 @@
+﻿@model PagedQueryResult<BlogPostSumario>
+
+@inject ICofoundryHelper Cofoundry
+@{
+    Layout = null;
+}
+
+
+<div id="mensagem-cima-destaque">
+    <span class="span-mensagem-cima-destaque">Destaques</span>
+</div>
+
+
+
+<div class="posts">
+    <div class="last-post">
+        <img src="@Cofoundry.Routing.ImageAsset(Model.Items.First().ThumbnailImageAsset)" width="100%" height="100%" class="img-principal">
+        <a href="@Model.Items.First().Caminho">
+            <ul class="post-grande">
+                <li id="mensagem-cima">
+                    <span class="span-mensagem-cima">@Model.Items.First().Tag</span>
+                </li>
+
+                <li class="space"></li>
+                <li id="grande-texto">
+                    <span class="span-grande-texto">@Model.Items.First().Titulo</span>
+                </li>
+            </ul>
+        </a>
+    </div>
+
+
+    <div class="last-post-1">
+
+
+        <div class="last-post-2">
+            <img src="@Cofoundry.Routing.ImageAsset(Model.Items.Skip(1).First().ThumbnailImageAsset)" width="100%" height="100%" class="img-principal">
+            <a href="@Model.Items.Skip(1).First().Caminho">
+                <ul class="post-pequeno">
+                    <li id="mensagem-cima-pqn">
+                        <span class="span-mensagem-cima">@Model.Items.Skip(1).First().Tag<span>
+                    </li>
+                    <li class="space"></li>
+                    <li id="pqn-texto">
+                        <span class="span-grande-texto">@Model.Items.Skip(1).First().Titulo</span>
+                    </li>
+
+                </ul>
+            </a>
+        </div>
+
+        <div class="last-post-3">
+            <img src="@Cofoundry.Routing.ImageAsset(Model.Items.Skip(2).First().ThumbnailImageAsset)" width="100%" height="100%" class="img-principal">
+            <a href="@Model.Items.Skip(2).First().Caminho">
+                <ul class="post-pequeno">
+                    <li id="mensagem-cima-pqn">
+                        <span class="span-mensagem-cima">@Model.Items.Skip(2).First().Tag</span>
+                    </li>
+                    <li class="space"></li>
+                    <li id="pqn-texto">
+                        <span class="span-grande-texto">@Model.Items.Skip(2).First().Titulo</span>
+                    </li>
+                </ul>
+            </a>
+        </div>
+
+        <div class="last-post-2">
+            <img src="@Cofoundry.Routing.ImageAsset(Model.Items.Skip(3).First().ThumbnailImageAsset)" width="100%" height="100%" class="img-principal">
+            <a href="@Model.Items.Skip(3).First().Caminho">
+                <ul class="post-pequeno">
+                    <li id="mensagem-cima-pqn">
+                        <span class="span-mensagem-cima">@Model.Items.Skip(3).First().Tag</span>
+                    </li>
+                    <li class="space"></li>
+                    <li id="pqn-texto">
+                        <span class="span-grande-texto">@Model.Items.Skip(3).First().Titulo</span>
+                    </li>
+
+                </ul>
+            </a>
+        </div>
+
+        <div class="last-post-3">
+            <img src="@Cofoundry.Routing.ImageAsset(Model.Items.Skip(4).First().ThumbnailImageAsset)" width="100%" height="100%" class="img-principal">
+            <a href="@Model.Items.Skip(4).First().Caminho">
+                <ul class="post-pequeno">
+                    <li id="mensagem-cima-pqn">
+                        <span class="span-mensagem-cima">@Model.Items.Skip(4).First().Tag</span>
+                    </li>
+                    <li class="space"></li>
+                    <li id="pqn-texto">
+                        <span class="span-grande-texto">@Model.Items.Skip(4).First().Titulo</span>
+                    </li>
+
+                </ul>
+            </a>
+        </div>
+    </div>
+</div>
+<ul>
+    <br /><br />
+
+          <div class="mensagem-cima-destaque">
+              <span class="span-mensagem-cima-destaque2">Mais notícias</span>
+              <span class="most-read-linha"></span>
+
+          </div>
+
+    @{
+        int i = 0;
+    }
+
+    @foreach (var blogPost in Model.Items.Skip(5))
+    {
+        i++;
+        <li class="most-read">
+            <div class="most-read-1">
+                <a href="@blogPost.Caminho" class="a-img"><img src="@Cofoundry.Routing.ImageAsset(blogPost.ThumbnailImageAsset)" width="100%" height="100%" class="img-principal"></a>
+                <div class="most-read-position">
+                    <a href="#" class="position">@(i)º</a>
+
+                </div>
+            </div>
+            <div class="most-read-2">
+                <a href="@blogPost.Caminho" class="most-read-tag">@blogPost.Tag</a>
+                <a href="@blogPost.Caminho" class="most-read-title">@blogPost.Titulo</a>
+                <a href="@blogPost.Caminho" class="most-read-desc">@blogPost.Descricao</a>
+                <div class="most-read-date">@blogPost.DataPost — Em @blogPost.Categoria</div>
+                <div class="most-read-date2">0001 visualizações</div>
+            </div>
+        </li>
+        <span class="most-read-linha"></span>
+    }
+</ul>

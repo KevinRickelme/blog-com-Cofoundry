@@ -1,0 +1,27 @@
+﻿@model ICustomEntityPageViewModel<BlogPostDisplayModel>
+@inject ICofoundryTemplateHelper<ICustomEntityPageViewModel<BlogPostDisplayModel>> Cofoundry
+@{
+    Cofoundry.Template.UseDescription("Template for the blog post details page");
+    var post = Model.CustomEntity.Model;
+}
+
+<div class="materia">
+    <div class="mx-auto p1">
+        <h1 class="page-title">@post.Titulo</h1>
+        <h2 class="page-desc">@post.Descricao</h2>
+    </div>
+
+    <span class="page-linha"></span>
+
+
+    <div class="materia">
+
+        @(await Cofoundry.Template.CustomEntityRegion("Body")
+        .AllowMultipleBlocks()
+        .AllowBlockType<ContentSectionDataModel>()
+        .EmptyContentMinHeight(500)
+        .InvokeAsync())
+
+    </div>
+</div>
+

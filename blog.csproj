@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <MvcRazorExcludeViewFilesFromPublish>false</MvcRazorExcludeViewFilesFromPublish>
+    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cofoundry.Plugins.Imaging.SkiaSharp" Version="0.3.1" />
+    <PackageReference Include="Cofoundry.Plugins.ErrorLogging.Admin" Version="0.9.0" />
+    <PackageReference Include="Cofoundry.Plugins.SiteMap" Version="0.9.1" />
+    <PackageReference Include="Cofoundry.Web.Admin" Version="0.9.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Cofoundry\Views\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,78 @@
+@inject ICofoundryHelper Cofoundry
+
+@{
+    Layout = null;
+
+    string title = null;
+    string description = null;
+
+    var metaDataModel = Model as IPageWithMetaDataViewModel;
+    if (metaDataModel != null)
+    {
+
+        description = metaDataModel.MetaDescription;
+        title = metaDataModel.PageTitle;
+    }
+    else
+    {
+        description = "TODO: Add default description";
+    }
+
+    title = StringHelper.FirstNonEmpty(title, ViewBag.Title, "TODO: Add default title");
+    title += " | Cofoundry Template Site";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8″>
+
+
+    <title>@title</title>
+
+    <meta name="description" content="@description" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/body-css.css">
+    <link rel="stylesheet" href="~/css/page.css">
+    <link rel="stylesheet" href="~/css/mostread-css.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <nav class="navbar">
+            <ul class="navbar-nav mx-auto">
+                <a class="navbar-brand" href="../">MY BLOG</a>
+            </ul>
+            <form class="d-flex">
+                <button class="btn" type="button">
+                    <i class="bx bx-search"></i>
+                </button>
+                <input class="form-control" type="search" placeholder="BUSCAR" aria-label="Search">
+            </form>
+        </nav>
+
+
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+    <div class="container">
+        <nav class="navbar">
+            <ul class="navbar-nav mx-auto">
+                <a class="navbar-brand" href="#">© Copyright 2021, ALL RIGHT RESERVED.</a>
+            </ul>
+        </nav>
+    </div>
+
+
+    @RenderSection("FooterScripts", required: false)
+
+</body>
+</html>
